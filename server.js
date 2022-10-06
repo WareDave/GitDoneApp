@@ -5,6 +5,10 @@ const connectDB = require("./config/db")
 
 const app = express();
 
+// routes
+
+const todo = require("./routes/todo")
+
 connectDB();
 
 // middleware
@@ -12,6 +16,9 @@ connectDB();
 app.use(express.json({ extended: false }));
 app.get("/", (req, res) => res.send("Serves up"));
 
+// use routes
+
+app.use("/api/todo");
 
 //  port setup
 
