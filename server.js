@@ -1,30 +1,32 @@
-require('dotenv').config();
-const express = require('express');
 
-const connectDB = require("./config/db")
+
+require("dotenv").config({});
+const express = require("express");
+const cors = require("cors");
+
+const connectDB = require("./config/db");
 
 const app = express();
 
 // routes
-
-const todo = require("./routes/todo")
-
+const todo = require("./routes/todo");
+// connect database
 connectDB();
 
-// middleware
+// cors
+app.use(cors({ origin: true, credentials: true }));
 
+// initialize middleware
 app.use(express.json({ extended: false }));
-app.get("/", (req, res) => res.send("Serves up"));
+app.get("/", (req, res) => res.send("server is active"));
 
 // use routes
+app.use("/api/todo", todo);
 
-app.use("/api/todo");
-
-//  port setup
+// setting up port
 
 const PORT = process.env.PORT || 8000;
 
-
 app.listen(PORT, () => {
-    console.log('spun up and running on localhost:${PORT}')
-})
+    console.log(`server is running on http://localhost:${PORT}`);
+});

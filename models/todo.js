@@ -1,20 +1,14 @@
 const mongoose = require("mongoose");
 
-
-
-
 const TodoSchema = new mongoose.Schema({
     title: {
-        type: "String",
+        type: String,
         required: true,
     },
     description: {
-        type: "String",
+        type: String,
     },
 });
-
-
-
 
 const Todo = mongoose.model("todo", TodoSchema);
 

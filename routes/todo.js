@@ -1,6 +1,6 @@
 const express = require("express");
-const router = express.Router();
 
+const router = express.Router();
 
 const {
     getAllTodo,
@@ -11,31 +11,30 @@ const {
 
 /**
  * @route GET api/todo
- * @description get all todo
+ * @description get all todos
  * @access public
  */
 
 router.get("/", getAllTodo);
 
 /**
- * @route GET api/todo
- * @description add
+ * @route POST api/todo
+ * @description Add a new TODO
  * @access public
  */
 
 router.post("/", postCreateTodo);
 
 /**
- * @route GET api/todo
- * @description update
+ * @route PUT api/todo/:id
+ * @description update todo
  * @access public
  */
-
 router.put("/:id", putUpdateTodo);
 
 /**
- * @route GET api/todo
- * @description delete
+ * @route DELETE api/todo/:id
+ * @description delete todo by id
  * @access public
  */
 
